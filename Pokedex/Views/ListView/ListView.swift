@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct ListView: View {
+    
+    @StateObject private var viewModel = ListViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        List(viewModel.PokemonList) { pokemon in
+            Text(pokemon.name)
         }
+        .listStyle(.plain)
+        .onAppear(perform: {
+            Task {
+                await viewModel.fetchPokemonList()
+            }
+        })
         .padding()
     }
 }
