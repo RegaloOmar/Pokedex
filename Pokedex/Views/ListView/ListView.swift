@@ -15,6 +15,7 @@ struct ListView: View {
         List(viewModel.PokemonList) { pokemon in
             Text(pokemon.name)
         }
+        .scrollIndicators(.never)
         .listStyle(.plain)
         .onAppear(perform: {
             Task {

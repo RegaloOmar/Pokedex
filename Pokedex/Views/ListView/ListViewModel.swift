@@ -9,8 +9,9 @@ import Foundation
 
 class ListViewModel: ObservableObject {
     
-    @Published var PokemonList: [PokemonList] = []
+    @Published var pokemons: [Pokemon] = []
     
+    var PokemonList: [PokemonList] = [] 
     private let pokemonService: PokemonServiceManagerProtocol
     private var mainQueue = DispatchQueue.main
     private var next: String?
@@ -22,7 +23,7 @@ class ListViewModel: ObservableObject {
     
     func fetchPokemonList() async {
         do {
-            let rootInfo = try await pokemonService.fetchPokemonList()
+            let rootInfo = try await pokemonService.fetchRootInfo()
             mainQueue.async { [weak self] in
                 guard let self = self else { return }
                 

@@ -9,12 +9,17 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        TabView {
-            ListView()
-                .tabItem {
-                    Label("PokeDex", systemImage: "list.dash")
-                }
+        NavigationView{
+            TabView {
+                ListView()
+                    .tabItem {
+                        Label("PokeDex", systemImage: "list.dash")
+                    }
+                    
+            }
         }
+        .navigationTitle("PokeDex")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

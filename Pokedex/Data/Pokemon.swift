@@ -15,6 +15,11 @@ struct RootInfo: Codable {
 }
 
 struct Pokemon: Codable {
+    let id: Int
+    let name: String
+    let baseExperience: Int
+    let height: Int
+    let isDefault: Bool
     let abilities: Ability
 }
 
