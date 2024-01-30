@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		9FB51D232B623A0C00FE9EE0 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB51D222B623A0C00FE9EE0 /* ListViewModel.swift */; };
 		9FB51D262B62B2E900FE9EE0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB51D252B62B2E900FE9EE0 /* MainView.swift */; };
+		E51BAC3A2B69497D00522764 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = E51BAC392B69497D00522764 /* CachedAsyncImage */; };
+		E51BAC3D2B69620700522764 /* URLCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51BAC3C2B69620700522764 /* URLCache.swift */; };
+		E51BAC402B6964FC00522764 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51BAC3F2B6964FC00522764 /* FavoritesView.swift */; };
+		E51BAC422B69650B00522764 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51BAC412B69650B00522764 /* FavoritesViewModel.swift */; };
 		E52AE6912B6041E8006D5183 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52AE6902B6041E8006D5183 /* PokedexApp.swift */; };
 		E52AE6932B6041E8006D5183 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52AE6922B6041E8006D5183 /* ListView.swift */; };
 		E52AE6952B6041E9006D5183 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E52AE6942B6041E9006D5183 /* Assets.xcassets */; };
@@ -40,6 +44,9 @@
 /* Begin PBXFileReference section */
 		9FB51D222B623A0C00FE9EE0 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		9FB51D252B62B2E900FE9EE0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E51BAC3C2B69620700522764 /* URLCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCache.swift; sourceTree = "<group>"; };
+		E51BAC3F2B6964FC00522764 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		E51BAC412B69650B00522764 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		E52AE68D2B6041E8006D5183 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E52AE6902B6041E8006D5183 /* PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexApp.swift; sourceTree = "<group>"; };
 		E52AE6922B6041E8006D5183 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -59,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E51BAC3A2B69497D00522764 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +104,23 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
+		E51BAC3B2B6961EC00522764 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E51BAC3C2B69620700522764 /* URLCache.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E51BAC3E2B6964D200522764 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				E51BAC3F2B6964FC00522764 /* FavoritesView.swift */,
+				E51BAC412B69650B00522764 /* FavoritesViewModel.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		E52AE6842B6041E8006D5183 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +144,7 @@
 		E52AE68F2B6041E8006D5183 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				E51BAC3B2B6961EC00522764 /* Utils */,
 				E52AE6BC2B6048CF006D5183 /* Network */,
 				E52AE6BB2B6048BA006D5183 /* Views */,
 				E52AE6BA2B60489D006D5183 /* Data */,
@@ -165,6 +191,7 @@
 		E52AE6BB2B6048BA006D5183 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E51BAC3E2B6964D200522764 /* Favorites */,
 				9FB51D242B62B2D600FE9EE0 /* MainView */,
 				9FB51D212B6239F500FE9EE0 /* ListView */,
 			);
@@ -195,6 +222,9 @@
 			dependencies = (
 			);
 			name = Pokedex;
+			packageProductDependencies = (
+				E51BAC392B69497D00522764 /* CachedAsyncImage */,
+			);
 			productName = Pokedex;
 			productReference = E52AE68D2B6041E8006D5183 /* Pokedex.app */;
 			productType = "com.apple.product-type.application";
@@ -267,6 +297,9 @@
 				Base,
 			);
 			mainGroup = E52AE6842B6041E8006D5183;
+			packageReferences = (
+				E51BAC382B69497D00522764 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = E52AE68E2B6041E8006D5183 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -310,8 +343,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FB51D232B623A0C00FE9EE0 /* ListViewModel.swift in Sources */,
+				E51BAC3D2B69620700522764 /* URLCache.swift in Sources */,
 				9FB51D262B62B2E900FE9EE0 /* MainView.swift in Sources */,
+				E51BAC422B69650B00522764 /* FavoritesViewModel.swift in Sources */,
 				E52AE6C02B6057D8006D5183 /* PokemonServiceManager.swift in Sources */,
+				E51BAC402B6964FC00522764 /* FavoritesView.swift in Sources */,
 				E52AE6932B6041E8006D5183 /* ListView.swift in Sources */,
 				E52AE6912B6041E8006D5183 /* PokedexApp.swift in Sources */,
 				E52AE6BE2B604A3D006D5183 /* Pokemon.swift in Sources */,
@@ -649,6 +685,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E51BAC382B69497D00522764 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E51BAC392B69497D00522764 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E51BAC382B69497D00522764 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E52AE6852B6041E8006D5183 /* Project object */;
 }

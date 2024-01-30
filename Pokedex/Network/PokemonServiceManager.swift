@@ -23,7 +23,7 @@ class PokemonServiceManager: PokemonServiceManagerProtocol {
     }
     
     func fetchPokemonData() async throws -> PokemonResponse {
-        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0") else {
+        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=50&offset=0") else {
             throw APIError.invalidURL
         }
         
@@ -65,8 +65,4 @@ class PokemonServiceManager: PokemonServiceManagerProtocol {
         let decodedResponse = try JSONDecoder().decode(dataType.self, from: data)
         return decodedResponse
     }
-}
-
-struct ServiceEndPoints {
-    static let baseListURL = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"
 }

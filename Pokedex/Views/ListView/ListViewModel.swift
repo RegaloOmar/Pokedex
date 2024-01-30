@@ -10,8 +10,8 @@ import Foundation
 class ListViewModel: ObservableObject {
     
     @Published var pokemons: [Pokemon] = []
+    @Published var error: Error?
     
-    var PokemonList: [PokemonList] = [] 
     private let pokemonService: PokemonServiceManagerProtocol
     private var mainQueue = DispatchQueue.main
     private var next: String?
@@ -29,11 +29,12 @@ class ListViewModel: ObservableObject {
                 self.pokemons = pokemonInfo.pokemons
                 self.next = pokemonInfo.next
             }
-            
         } catch {
-            mainQueue.async { [weak self] in
-                
-            }
+            
         }
+    }
+    
+    func getPokemonTypes() {
+        
     }
 }

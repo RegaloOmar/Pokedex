@@ -6,23 +6,43 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct ListView: View {
     
     @StateObject private var viewModel = ListViewModel()
     
     var body: some View {
-        List(viewModel.pokemons) { pokemon in
-            Text(pokemon.name)
-        }
-        .scrollIndicators(.never)
-        .listStyle(.plain)
-        .onAppear(perform: {
-            Task {
-                await viewModel.fetchPokemonList()
+        GeometryReader(content: { geometry in
+            let gridItemWidth = CGFloat((geometry.size.width / 2) - 5)
+            let gridItem = GridItem(.fixed(gridItemWidth))
+            
+            ScrollView {
+                LazyVGrid(columns: [gridItem, gridItem]) {
+                    ForEach(viewModel.pokemons) { pokemon in
+                        VStack {
+                            CachedAsyncImage(url: URL(string: pokemon.sprites.frontDefault))
+                                
+                            Text(pokemon.name)
+                                .foregroundStyle(.white)
+                                .padding(.bottom)
+                        }
+                        .frame(width: gridItemWidth)
+                        .background {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundStyle(.red)
+                        }
+                    }
+                }
+                .onAppear {
+                    Task {
+                        await viewModel.fetchPokemonList()
+                    }
+                }
             }
+            .scrollIndicators(.hidden)
         })
-        .padding()
+        .padding(10)
     }
 }
 

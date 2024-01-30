@@ -15,11 +15,13 @@ struct MainView: View {
                     .tabItem {
                         Label("PokeDex", systemImage: "list.dash")
                     }
-                    
+                
+                FavoritesView()
+                    .tabItem {
+                        Label("Favorites", systemImage: "star")
+                    }
             }
         }
-        .navigationTitle("PokeDex")
-        .navigationBarTitleDisplayMode(.large)
     }
 }
 
