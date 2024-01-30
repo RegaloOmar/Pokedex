@@ -8,26 +8,37 @@
 import Foundation
 
 protocol PokemonServiceManagerProtocol {
-    func fetchRootInfo() async throws -> RootInfo
-    func fetchPokemonData(pokemonURL: String) async throws -> Pokemon
+    typealias PokemonResponse = (next: String?, pokemons: [Pokemon])
+    
+    func fetchPokemonData() async throws -> PokemonResponse
 }
 
 
 class PokemonServiceManager: PokemonServiceManagerProtocol {
     
-    public enum APIError: Error {
+    enum APIError: Error {
         case invalidURL
         case networkError(Error)
         case invalidResponse
     }
     
-    func fetchRootInfo() async throws -> RootInfo {
+    func fetchPokemonData() async throws -> PokemonResponse {
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0") else {
             throw APIError.invalidURL
         }
         
         do {
-            return try await execute(url: url, dataType: RootInfo.self)
+            let rootInfo = try await execute(url: url, dataType: RootInfo.self)
+            var pokemonList: [Pokemon] = []
+            for result in rootInfo.results {
+                do {
+                    let pokemon = try await fetchPokemonData(pokemonURL: result.url)
+                    pokemonList.append(pokemon)
+                } catch {
+                    throw APIError.invalidResponse
+                }
+            }
+            return (rootInfo.next, pokemonList)
         } catch (let error) {
             throw APIError.networkError(error)
         }

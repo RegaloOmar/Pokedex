@@ -14,24 +14,60 @@ struct RootInfo: Codable {
     let results: [PokemonList]
 }
 
-struct Pokemon: Codable {
+struct Pokemon: Codable, Identifiable {
     let id: Int
     let name: String
     let baseExperience: Int
     let height: Int
     let isDefault: Bool
-    let abilities: Ability
+    let abilities: [Abilities]
+    let sprites: Sprites
+    let types: [Types]
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case baseExperience = "base_experience"
+        case height
+        case isDefault = "is_default"
+        case abilities
+        case sprites
+        case types
+    }
 }
 
-struct PokemonList: Codable, Identifiable {
-    let id = UUID()
+struct PokemonList: Codable {
     let name: String
     let url: String
+}
+
+struct Abilities: Codable {
+    let isHidden: Bool
+    let slot: Int
+    let ability: Ability
+    
+    enum CodingKeys: String, CodingKey {
+        case isHidden = "is_hidden"
+        case slot
+        case ability
+    }
 }
 
 struct Ability: Codable {
     let name: String
     let url: String
-    let isHidden: Bool
-    let slot: Int
 }
+
+struct Sprites: Codable {
+    let frontDefault: String
+    
+    enum CodingKeys: String, CodingKey {
+        case frontDefault = "front_default"
+    }
+}
+
+struct Types: Codable {
+    let slot: Int
+    let type: PokemonList
+}
+

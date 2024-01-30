@@ -23,14 +23,13 @@ class ListViewModel: ObservableObject {
     
     func fetchPokemonList() async {
         do {
-            let rootInfo = try await pokemonService.fetchRootInfo()
-            mainQueue.async { [weak self] in
+            let pokemonInfo = try await pokemonService.fetchPokemonData()
+            mainQueue.async {[weak self] in
                 guard let self = self else { return }
-                
-                self.PokemonList = rootInfo.results
-                self.next = rootInfo.next
-                self.previuos = rootInfo.previous
+                self.pokemons = pokemonInfo.pokemons
+                self.next = pokemonInfo.next
             }
+            
         } catch {
             mainQueue.async { [weak self] in
                 

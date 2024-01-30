@@ -12,7 +12,7 @@ struct ListView: View {
     @StateObject private var viewModel = ListViewModel()
     
     var body: some View {
-        List(viewModel.PokemonList) { pokemon in
+        List(viewModel.pokemons) { pokemon in
             Text(pokemon.name)
         }
         .scrollIndicators(.never)
@@ -31,3 +31,5 @@ struct ContentView_Previews: PreviewProvider {
         ListView()
     }
 }
+
+
