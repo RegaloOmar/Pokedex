@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ListViewModel: ObservableObject {
     
@@ -34,7 +35,8 @@ class ListViewModel: ObservableObject {
         }
     }
     
-    func getPokemonTypes() {
-        
+    func getBackgroundColor(from pokemonTypes: [Types]) -> Color {
+        guard let pokemonType = pokemonTypes.first else { return Color.gray}
+        return TypeColors().getColor(from: pokemonType.type.name)
     }
 }

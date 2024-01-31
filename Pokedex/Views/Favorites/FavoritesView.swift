@@ -27,6 +27,7 @@ struct FavoritesView: View {
                                     .padding(.bottom, -15)
                                 
                                 Text(pokemon.name.capitalized)
+                                    .font(.system(.headline))
                                     .foregroundStyle(.white)
                                     .padding(.bottom, 10)
                                 
@@ -48,7 +49,7 @@ struct FavoritesView: View {
                         .frame(width: gridItemWidth)
                         .background {
                             RoundedRectangle(cornerRadius: 20)
-                                .foregroundStyle(.red)
+                                .foregroundStyle(viewModel.getBackgroundColor(from: pokemon.types))
                         }
                     }
                 }

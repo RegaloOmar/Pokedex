@@ -44,18 +44,13 @@ struct PokemonList: Codable {
 struct Abilities: Codable {
     let isHidden: Bool
     let slot: Int
-    let ability: Ability
+    let ability: PokemonList
     
     enum CodingKeys: String, CodingKey {
         case isHidden = "is_hidden"
         case slot
         case ability
     }
-}
-
-struct Ability: Codable {
-    let name: String
-    let url: String
 }
 
 struct Sprites: Codable {

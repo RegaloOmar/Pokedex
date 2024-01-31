@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22G74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="AbilitiesCoreData" representedClassName="AbilitiesCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="ability" optional="YES" attributeType="Transformable"/>
+        <attribute name="isHidden" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="slot" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="PokemonCoreData" representedClassName="PokemonCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="abilities" optional="YES" attributeType="Transformable"/>
+        <attribute name="attribute" optional="YES" attributeType="Transformable"/>
+        <attribute name="baseExperience" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sprites" optional="YES" attributeType="Transformable"/>
+        <attribute name="types" optional="YES" attributeType="Transformable"/>
+        <relationship name="pokemonAbilities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AbilitiesCoreData"/>
+        <relationship name="pokemonSprites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpritesCoreData"/>
+        <relationship name="pokemonTypes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypesCoreData"/>
+    </entity>
+    <entity name="PokemonListCoreData" representedClassName="PokemonListCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="SpritesCoreData" representedClassName="SpritesCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="frontDefault" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="TypesCoreData" representedClassName="TypesCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="slot" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="Transformable"/>
+    </entity>
+</model>

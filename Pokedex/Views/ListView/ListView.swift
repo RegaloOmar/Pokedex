@@ -16,21 +16,21 @@ struct ListView: View {
         GeometryReader(content: { geometry in
             let gridItemWidth = CGFloat((geometry.size.width / 2) - 5)
             let gridItem = GridItem(.fixed(gridItemWidth))
-            
             ScrollView {
                 LazyVGrid(columns: [gridItem, gridItem]) {
                     ForEach(viewModel.pokemons) { pokemon in
                         VStack {
                             CachedAsyncImage(url: URL(string: pokemon.sprites.frontDefault))
                                 
-                            Text(pokemon.name)
+                            Text(pokemon.name.capitalized)
+                                .font(.system(.headline))
                                 .foregroundStyle(.white)
                                 .padding(.bottom)
                         }
                         .frame(width: gridItemWidth)
                         .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundStyle(.red)
+                            RoundedRectangle(cornerRadius: 14)
+                                .foregroundStyle(viewModel.getBackgroundColor(from: pokemon.types))
                         }
                     }
                 }
@@ -49,6 +49,7 @@ struct ListView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ListView()
+            .preferredColorScheme(.dark)
     }
 }
 
