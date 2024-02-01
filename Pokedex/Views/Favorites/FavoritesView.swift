@@ -10,9 +10,8 @@ import SwiftData
 
 struct FavoritesView: View {
     
-    @Environment(\.modelContext) var modelContext
-    @Query(sort: \PokemonModel.id) var pokemonsModel: [PokemonModel]
-    @StateObject private var viewModel = ListViewModel()
+    @EnvironmentObject var pokemonModelViewModel: PokemonModelViewModel
+    @StateObject private var viewModel = FavoritesViewModel()
     
     var body: some View {
         GeometryReader(content: { geometry in
@@ -21,7 +20,7 @@ struct FavoritesView: View {
             
             ScrollView {
                 LazyVGrid(columns: [gridItem]) {
-                    ForEach(pokemonsModel) { pokemon in
+                    ForEach(pokemonModelViewModel.pokemonsModel) { pokemon in
                         HStack {
                             
                             VStack {
@@ -66,6 +65,9 @@ struct FavoritesView: View {
                     }
                 }
                 .scrollIndicators(.hidden)
+            }
+            .onAppear{
+                pokemonModelViewModel.getSavedPokemons()
             }
         })
         .padding(10)

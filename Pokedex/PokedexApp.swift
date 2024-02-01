@@ -13,7 +13,7 @@ struct PokedexApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environment(PokemonModelViewModel())
         }
-        .modelContainer(for: [PokemonModel.self])
     }
 }

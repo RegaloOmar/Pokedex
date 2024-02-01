@@ -10,8 +10,7 @@ import SwiftData
 
 struct DetailsView: View {
     
-    @Environment(\.modelContext) var modelContext
-    @Query(sort: \PokemonModel.id) var pokemonsModel: [PokemonModel]
+    @Environment(PokemonModelViewModel.self) var pokemonModelViewModel
     @State var isFavorite: Bool
     @StateObject private var viewModel: DetailsViewModel = DetailsViewModel()
     
@@ -99,10 +98,10 @@ struct DetailsView: View {
                                                            height: pokemon.height,
                                                            sprites: pokemon.sprites,
                                                            abilities: pokemon.abilities,
-                                                           types: pokemon.types, isFavorite: isFavorite)
+                                                           types: pokemon.types, 
+                                                           isFavorite: isFavorite)
                         withAnimation {
-                            modelContext.insert(favoritePokemon)
-                            try? modelContext.save()
+                            
                         }
                     } else {
                         let favoritePokemon = PokemonModel(id: pokemon.id,
@@ -115,16 +114,13 @@ struct DetailsView: View {
                                                            isFavorite: isFavorite)
                         isFavorite.toggle()
                         withAnimation {
-                            modelContext.delete(favoritePokemon)
                         }
-                        try? modelContext.save()
                     }
                     
                     
                 }, label: {
                     Image(systemName: isFavorite ? "star.fill" : "star")
                         .foregroundStyle(Color("pokemonElectric", bundle: nil))
-                    .hidden()
                 })
             }
             .navigationTitle(pokemon.name.capitalized)
@@ -134,7 +130,7 @@ struct DetailsView: View {
 }
 
 #Preview {
-    DetailsView(isFavorite: true,
+    DetailsView(isFavorite: false,
                 pokemon: PokemonData(id: 1,
                                      name: "Pikachu",
                                      baseExperience: 100,

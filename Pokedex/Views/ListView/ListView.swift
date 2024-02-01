@@ -10,8 +10,6 @@ import SwiftData
 
 struct ListView: View {
     
-    @Environment(\.modelContext) var modelContext
-    @Query(sort: \PokemonModel.id) var pokemonsModel: [PokemonModel]
     @StateObject private var viewModel = ListViewModel()
     @State private var isFavorite: Bool = false
     @State private var isLoading: Bool = true
@@ -51,10 +49,12 @@ struct ListView: View {
                     }
                 }
                 .onAppear {
-                    Task {
-                        isLoading = true
-                        await viewModel.fetchPokemonList()
-                        isLoading = false
+                    if viewModel.pokemons.count == 0 {
+                        Task {
+                            isLoading = true
+                            await viewModel.fetchPokemonList()
+                            isLoading = false
+                        }
                     }
                 }
             })
@@ -86,7 +86,7 @@ struct PokemonGrid: View {
                     case .success(let image):
                         image
                     case .failure(_):
-                        Image("dittoPlaceholder")
+                        Image("pokeball")
                             .resizable()
                             .frame(width: 50, 
                                    height: 50)
