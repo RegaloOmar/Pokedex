@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PokemonServiceManagerProtocol {
-    typealias PokemonResponse = (next: String?, pokemons: [Pokemon])
+    typealias PokemonResponse = (next: String?, pokemons: [PokemonData])
     
     func fetchPokemonData() async throws -> PokemonResponse
 }
@@ -29,7 +29,7 @@ class PokemonServiceManager: PokemonServiceManagerProtocol {
         
         do {
             let rootInfo = try await execute(url: url, dataType: RootInfo.self)
-            var pokemonList: [Pokemon] = []
+            var pokemonList: [PokemonData] = []
             for result in rootInfo.results {
                 do {
                     let pokemon = try await fetchPokemonData(pokemonURL: result.url)
@@ -44,12 +44,12 @@ class PokemonServiceManager: PokemonServiceManagerProtocol {
         }
     }
     
-    func fetchPokemonData(pokemonURL: String) async throws -> Pokemon {
+    func fetchPokemonData(pokemonURL: String) async throws -> PokemonData {
         guard let url = URL(string: pokemonURL) else {
             throw APIError.invalidURL
         }
         do {
-            return try await execute(url: url, dataType: Pokemon.self)
+            return try await execute(url: url, dataType: PokemonData.self)
         } catch (let error) {
             throw APIError.networkError(error)
         }

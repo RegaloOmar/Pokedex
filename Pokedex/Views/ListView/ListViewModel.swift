@@ -10,7 +10,7 @@ import SwiftUI
 
 class ListViewModel: ObservableObject {
     
-    @Published var pokemons: [Pokemon] = []
+    @Published var pokemons: [PokemonData] = []
     @Published var error: Error?
     
     private let pokemonService: PokemonServiceManagerProtocol

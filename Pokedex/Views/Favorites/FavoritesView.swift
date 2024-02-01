@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
+import SwiftData
 
 struct FavoritesView: View {
     
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: \PokemonModel.id) var pokemonsModel: [PokemonModel]
     @StateObject private var viewModel = ListViewModel()
     
     var body: some View {
@@ -19,11 +21,11 @@ struct FavoritesView: View {
             
             ScrollView {
                 LazyVGrid(columns: [gridItem]) {
-                    ForEach(viewModel.pokemons) { pokemon in
+                    ForEach(pokemonsModel) { pokemon in
                         HStack {
                             
                             VStack {
-                                CachedAsyncImage(url: URL(string: pokemon.sprites.frontDefault))
+                                AsyncImage(url: URL(string: pokemon.sprites.frontDefault))
                                     .padding(.bottom, -15)
                                 
                                 Text(pokemon.name.capitalized)
@@ -32,16 +34,26 @@ struct FavoritesView: View {
                                     .padding(.bottom, 10)
                                 
                             }
-                            VStack {
+                            
+                            VStack(alignment: .leading, spacing: 10.0) {
                                 Text("Height: " + String(pokemon.height))
                                     .foregroundStyle(.white)
                                 
                                 Text("Pokedex: " + String(pokemon.id))
                                     .foregroundStyle(.white)
                                 
-                                
-                                    
+                                Text("Base XP: " + String(pokemon.baseExperience))
+                                    .foregroundStyle(.white)
                             }
+                            
+                            
+                           LazyVGrid(columns: [GridItem(.fixed(70))]) {
+                               ForEach(pokemon.types, id: \.self) { typeList in
+                                   Text(typeList.type.name.capitalized)
+                                       .foregroundStyle(.white)
+                                       .bold()
+                               }
+                           }
                             
                             Spacer()
                         }
@@ -54,11 +66,6 @@ struct FavoritesView: View {
                     }
                 }
                 .scrollIndicators(.hidden)
-                .onAppear {
-                    Task {
-                        await viewModel.fetchPokemonList()
-                    }
-                }
             }
         })
         .padding(10)
