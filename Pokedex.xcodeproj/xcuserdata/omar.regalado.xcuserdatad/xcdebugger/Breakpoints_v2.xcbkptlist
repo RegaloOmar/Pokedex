@@ -14,8 +14,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "fetchPokemonData()"
             landmarkType = "7">
             <Locations>
@@ -92,8 +92,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "fetchPokemonData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -108,8 +108,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "fetchPokemonData()"
             landmarkType = "7">
             <Locations>
@@ -201,8 +201,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "fetchPokemonData()"
             landmarkType = "7">
             <Locations>
@@ -309,8 +309,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "fetchPokemonData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -325,8 +325,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "fetchPokemonData(pokemonURL:)"
             landmarkType = "7">
             <Locations>
@@ -418,8 +418,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "fetchPokemonData(pokemonURL:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -434,8 +434,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "fetchPokemonData(pokemonURL:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -450,8 +450,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "execute(url:dataType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -466,8 +466,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "execute(url:dataType:)"
             landmarkType = "7">
             <Locations>
@@ -514,8 +514,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "execute(url:dataType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -530,8 +530,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "execute(url:dataType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -546,8 +546,8 @@
             filePath = "Pokedex/Network/PokemonServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "execute(url:dataType:)"
             landmarkType = "7">
          </BreakpointContent>

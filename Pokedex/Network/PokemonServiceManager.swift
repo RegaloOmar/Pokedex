@@ -11,6 +11,7 @@ protocol PokemonServiceManagerProtocol {
     typealias PokemonResponse = (next: String?, pokemons: [PokemonData])
     
     func fetchPokemonData() async throws -> PokemonResponse
+    func fetchMorePokemons(urlString: String) async throws -> PokemonResponse
 }
 
 
@@ -20,6 +21,28 @@ class PokemonServiceManager: PokemonServiceManagerProtocol {
         case invalidURL
         case networkError(Error)
         case invalidResponse
+    }
+    
+    func fetchMorePokemons(urlString: String) async throws -> PokemonResponse {
+        guard let url = URL(string: urlString) else {
+            throw APIError.invalidURL
+        }
+        
+        do {
+            let rootInfo = try await execute(url: url, dataType: RootInfo.self)
+            var pokemonList: [PokemonData] = []
+            for result in rootInfo.results {
+                do {
+                    let pokemon = try await fetchPokemonData(pokemonURL: result.url)
+                    pokemonList.append(pokemon)
+                } catch {
+                    throw APIError.invalidResponse
+                }
+            }
+            return (rootInfo.next, pokemonList)
+        } catch (let error) {
+            throw APIError.networkError(error)
+        }
     }
     
     func fetchPokemonData() async throws -> PokemonResponse {

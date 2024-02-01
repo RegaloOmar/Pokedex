@@ -35,6 +35,20 @@ class ListViewModel: ObservableObject {
         }
     }
     
+    func fetchMorePokemons() async {
+        do {
+            guard let urlString = next else { return }
+            let pokemonInfo = try await pokemonService.fetchMorePokemons(urlString: urlString)
+            mainQueue.async {[weak self] in
+                guard let self = self else { return }
+                self.pokemons.append(contentsOf: pokemonInfo.pokemons)
+                self.next = pokemonInfo.next
+            }
+        } catch {
+            
+        }
+    }
+    
     func getBackgroundColor(from pokemonTypes: [Types]) -> Color {
         guard let pokemonType = pokemonTypes.first else { return Color.gray}
         return TypeColors().getColor(from: pokemonType.type.name)
